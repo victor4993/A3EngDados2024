@@ -1,0 +1,115 @@
+
+CREATE SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1;
+
+CREATE TABLE Avaliacao_A3.DI_TEMPO (
+                SEQ_TEMPO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_tempo_seq_tempo_seq_1'),
+                MES INTEGER NOT NULL,
+                TRIMESTRE INTEGER NOT NULL,
+                SEMESTRE INTEGER NOT NULL,
+                ANO INTEGER NOT NULL,
+                CONSTRAINT di_tempo_pk PRIMARY KEY (SEQ_TEMPO)
+);
+
+
+ALTER SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1 OWNED BY Avaliacao_A3.DI_TEMPO.SEQ_TEMPO;
+
+CREATE SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1;
+
+CREATE TABLE Avaliacao_A3.DI_FORMA_ENVIO (
+                SEQ_FORMA_ENVIO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1'),
+                FORMA_ENVIO VARCHAR(20) NOT NULL,
+                CONSTRAINT di_forma_envio_pk PRIMARY KEY (SEQ_FORMA_ENVIO)
+);
+
+
+ALTER SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1 OWNED BY Avaliacao_A3.DI_FORMA_ENVIO.SEQ_FORMA_ENVIO;
+
+CREATE SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1;
+
+CREATE TABLE Avaliacao_A3.DI_GEOGRAFIA (
+                SEQ_GEOGRAFIA INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_geografia_seq_geografia_seq_1'),
+                CIDADE VARCHAR(60) NOT NULL,
+                ESTADO VARCHAR(30) NOT NULL,
+                REGIAO VARCHAR(10) NOT NULL,
+                PAIS VARCHAR(60) NOT NULL,
+                CONSTRAINT di_geografia_pk PRIMARY KEY (SEQ_GEOGRAFIA)
+);
+
+
+ALTER SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1 OWNED BY Avaliacao_A3.DI_GEOGRAFIA.SEQ_GEOGRAFIA;
+
+CREATE SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1;
+
+CREATE TABLE Avaliacao_A3.DI_CLIENTE (
+                SEQ_CLIENTE INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_cliente_seq_cliente_seq_1'),
+                NME_CLIENTE VARCHAR(80) NOT NULL,
+                TPO_CLIENTE VARCHAR(20) NOT NULL,
+                ID_CLIENTE VARCHAR(10) NOT NULL,
+                CONSTRAINT di_cliente_pk PRIMARY KEY (SEQ_CLIENTE)
+);
+
+
+ALTER SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1 OWNED BY Avaliacao_A3.DI_CLIENTE.SEQ_CLIENTE;
+
+CREATE SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq;
+
+CREATE TABLE Avaliacao_A3.DI_PRODUTO (
+                SEQ_PRODUTO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_produto_seq_produto_seq'),
+                CAT_PRODUTO VARCHAR(40) NOT NULL,
+                SUB_CAT_PRODUTO VARCHAR(40) NOT NULL,
+                NME_PRODUTO VARCHAR(255) NOT NULL,
+                ID_PRODUTO VARCHAR(20) NOT NULL,
+                CONSTRAINT seq_produto PRIMARY KEY (SEQ_PRODUTO)
+);
+
+
+ALTER SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq OWNED BY Avaliacao_A3.DI_PRODUTO.SEQ_PRODUTO;
+
+CREATE TABLE Avaliacao_A3.FT_VENDAS (
+                SEQ_CLIENTE INTEGER NOT NULL,
+                SEQ_GEOGRAFIA INTEGER NOT NULL,
+                SEQ_TEMPO INTEGER NOT NULL,
+                SEQ_PRODUTO INTEGER NOT NULL,
+                SEQ_FORMA_ENVIO INTEGER NOT NULL,
+                VALOR_VENDAS DOUBLE PRECISION NOT NULL,
+                NRO_ITENS_VENDIDOS INTEGER NOT NULL,
+                MARGEM_LUCRO DOUBLE PRECISION NOT NULL,
+                LUCRO_VENDAS DOUBLE PRECISION NOT NULL,
+                CONSTRAINT ft_vendas_pk PRIMARY KEY (SEQ_CLIENTE, SEQ_GEOGRAFIA, SEQ_TEMPO, SEQ_PRODUTO, SEQ_FORMA_ENVIO)
+);
+
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_tempo_ft_vendas_fk
+FOREIGN KEY (SEQ_TEMPO)
+REFERENCES Avaliacao_A3.DI_TEMPO (SEQ_TEMPO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_forma_envio_ft_vendas_fk
+FOREIGN KEY (SEQ_FORMA_ENVIO)
+REFERENCES Avaliacao_A3.DI_FORMA_ENVIO (SEQ_FORMA_ENVIO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_geografia_ft_vendas_fk
+FOREIGN KEY (SEQ_GEOGRAFIA)
+REFERENCES Avaliacao_A3.DI_GEOGRAFIA (SEQ_GEOGRAFIA)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_cliente_ft_vendas_fk
+FOREIGN KEY (SEQ_CLIENTE)
+REFERENCES Avaliacao_A3.DI_CLIENTE (SEQ_CLIENTE)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_produto_ft_vendas_fk
+FOREIGN KEY (SEQ_PRODUTO)
+REFERENCES Avaliacao_A3.DI_PRODUTO (SEQ_PRODUTO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE;

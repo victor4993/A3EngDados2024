@@ -1,0 +1,419 @@
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+438  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+477  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+477  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+508  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+0    [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ArchitectUtils  - Log4J configured successfully
+400  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+441  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+441  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Beginning to read/merge new pl.ini data
+472  [AWT-EventQueue-0] INFO  ca.sqlpower.sql.PlDotIni  - Finished reading file.
+16740 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1
+16742 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_TEMPO (
+                SEQ_TEMPO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_tempo_seq_tempo_seq_1'),
+                MES INTEGER NOT NULL,
+                TRIMESTRE INTEGER NOT NULL,
+                SEMESTRE INTEGER NOT NULL,
+                ANO INTEGER NOT NULL,
+                CONSTRAINT di_tempo_pk PRIMARY KEY (SEQ_TEMPO)
+)
+16743 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1 OWNED BY Avaliacao_A3.DI_TEMPO.SEQ_TEMPO
+16743 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1
+16743 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_FORMA_ENVIO (
+                SEQ_FORMA_ENVIO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1'),
+                FORMA_ENVIO VARCHAR(20) NOT NULL,
+                CONSTRAINT di_forma_envio_pk PRIMARY KEY (SEQ_FORMA_ENVIO)
+)
+16743 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1 OWNED BY Avaliacao_A3.DI_FORMA_ENVIO.SEQ_FORMA_ENVIO
+16743 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1
+16744 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_GEOGRAFIA (
+                SEQ_GEOGRAFIA INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_geografia_seq_geografia_seq_1'),
+                CIDADE VARCHAR(60) NOT NULL,
+                ESTADO VARCHAR(30) NOT NULL,
+                REGIAO VARCHAR(10) NOT NULL,
+                PAIS VARCHAR(60) NOT NULL,
+                CONSTRAINT di_geografia_pk PRIMARY KEY (SEQ_GEOGRAFIA)
+)
+16744 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1 OWNED BY Avaliacao_A3.DI_GEOGRAFIA.SEQ_GEOGRAFIA
+16744 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1
+16744 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_CLIENTE (
+                SEQ_CLIENTE INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_cliente_seq_cliente_seq_1'),
+                NME_CLIENTE VARCHAR(80) NOT NULL,
+                TPO_CLIENTE VARCHAR(20) NOT NULL,
+                ID_CLIENTE VARCHAR(10) NOT NULL,
+                CONSTRAINT di_cliente_pk PRIMARY KEY (SEQ_CLIENTE)
+)
+16744 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1 OWNED BY Avaliacao_A3.DI_CLIENTE.SEQ_CLIENTE
+16744 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq
+16745 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_PRODUTO (
+                SEQ_PRODUTO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_produto_seq_produto_seq'),
+                CAT_PRODUTO VARCHAR(40) NOT NULL,
+                SUB_CAT_PRODUTO VARCHAR(40) NOT NULL,
+                NME_PRODUTO VARCHAR(255) NOT NULL,
+                ID_PRODUTO VARCHAR(20) NOT NULL,
+                CONSTRAINT seq_produto PRIMARY KEY (SEQ_PRODUTO)
+)
+16745 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq OWNED BY Avaliacao_A3.DI_PRODUTO.SEQ_PRODUTO
+16745 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.FT_VENDAS (
+                SEQ_CLIENTE INTEGER NOT NULL,
+                SEQ_GEOGRAFIA INTEGER NOT NULL,
+                SEQ_TEMPO INTEGER NOT NULL,
+                SEQ_PRODUTO INTEGER NOT NULL,
+                SEQ_FORMA_ENVIO INTEGER NOT NULL,
+                VALOR_VENDAS DOUBLE PRECISION NOT NULL,
+                NRO_ITENS_VENDIDOS INTEGER NOT NULL,
+                MARGEM_LUCRO DOUBLE PRECISION NOT NULL,
+                LUCRO_VENDAS DOUBLE PRECISION NOT NULL,
+                CONSTRAINT ft_vendas_pk PRIMARY KEY (SEQ_CLIENTE, SEQ_GEOGRAFIA, SEQ_TEMPO, SEQ_PRODUTO, SEQ_FORMA_ENVIO)
+)
+16746 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_tempo_ft_vendas_fk
+FOREIGN KEY (SEQ_TEMPO)
+REFERENCES Avaliacao_A3.DI_TEMPO (SEQ_TEMPO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+16747 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_forma_envio_ft_vendas_fk
+FOREIGN KEY (SEQ_FORMA_ENVIO)
+REFERENCES Avaliacao_A3.DI_FORMA_ENVIO (SEQ_FORMA_ENVIO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+16748 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_geografia_ft_vendas_fk
+FOREIGN KEY (SEQ_GEOGRAFIA)
+REFERENCES Avaliacao_A3.DI_GEOGRAFIA (SEQ_GEOGRAFIA)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+16748 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_cliente_ft_vendas_fk
+FOREIGN KEY (SEQ_CLIENTE)
+REFERENCES Avaliacao_A3.DI_CLIENTE (SEQ_CLIENTE)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+16749 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_produto_ft_vendas_fk
+FOREIGN KEY (SEQ_PRODUTO)
+REFERENCES Avaliacao_A3.DI_PRODUTO (SEQ_PRODUTO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+16751 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :21
+21927 [Thread-5] ERROR ca.sqlpower.architect.swingui.action.CheckForUpdateAction  - Fail to retrieve current version number!
+687456 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1
+687456 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_TEMPO (
+                SEQ_TEMPO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_tempo_seq_tempo_seq_1'),
+                MES INTEGER NOT NULL,
+                TRIMESTRE INTEGER NOT NULL,
+                SEMESTRE INTEGER NOT NULL,
+                ANO INTEGER NOT NULL,
+                CONSTRAINT di_tempo_pk PRIMARY KEY (SEQ_TEMPO)
+)
+687456 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1 OWNED BY Avaliacao_A3.DI_TEMPO.SEQ_TEMPO
+687456 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1
+687458 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_FORMA_ENVIO (
+                SEQ_FORMA_ENVIO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1'),
+                FORMA_ENVIO VARCHAR(20) NOT NULL,
+                CONSTRAINT di_forma_envio_pk PRIMARY KEY (SEQ_FORMA_ENVIO)
+)
+687458 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1 OWNED BY Avaliacao_A3.DI_FORMA_ENVIO.SEQ_FORMA_ENVIO
+687458 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1
+687458 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_GEOGRAFIA (
+                SEQ_GEOGRAFIA INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_geografia_seq_geografia_seq_1'),
+                CIDADE VARCHAR(60) NOT NULL,
+                ESTADO VARCHAR(30) NOT NULL,
+                REGIAO VARCHAR(10) NOT NULL,
+                PAIS VARCHAR(60) NOT NULL,
+                CONSTRAINT di_geografia_pk PRIMARY KEY (SEQ_GEOGRAFIA)
+)
+687458 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1 OWNED BY Avaliacao_A3.DI_GEOGRAFIA.SEQ_GEOGRAFIA
+687458 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_CLIENTE (
+                SEQ_CLIENTE INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_cliente_seq_cliente_seq_1'),
+                NME_CLIENTE VARCHAR(80) NOT NULL,
+                TPO_CLIENTE VARCHAR(20) NOT NULL,
+                ID_CLIENTE VARCHAR(10) NOT NULL,
+                CONSTRAINT di_cliente_pk PRIMARY KEY (SEQ_CLIENTE)
+)
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1 OWNED BY Avaliacao_A3.DI_CLIENTE.SEQ_CLIENTE
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_PRODUTO (
+                SEQ_PRODUTO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_produto_seq_produto_seq'),
+                CAT_PRODUTO VARCHAR(40) NOT NULL,
+                SUB_CAT_PRODUTO VARCHAR(40) NOT NULL,
+                NME_PRODUTO VARCHAR(255) NOT NULL,
+                ID_PRODUTO VARCHAR(20) NOT NULL,
+                CONSTRAINT seq_produto PRIMARY KEY (SEQ_PRODUTO)
+)
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq OWNED BY Avaliacao_A3.DI_PRODUTO.SEQ_PRODUTO
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.FT_VENDAS (
+                SEQ_CLIENTE INTEGER NOT NULL,
+                SEQ_GEOGRAFIA INTEGER NOT NULL,
+                SEQ_TEMPO INTEGER NOT NULL,
+                SEQ_PRODUTO INTEGER NOT NULL,
+                SEQ_FORMA_ENVIO INTEGER NOT NULL,
+                VALOR_VENDAS DOUBLE PRECISION NOT NULL,
+                NRO_ITENS_VENDIDOS INTEGER NOT NULL,
+                MARGEM_LUCRO DOUBLE PRECISION NOT NULL,
+                LUCRO_VENDAS DOUBLE PRECISION NOT NULL,
+                CONSTRAINT ft_vendas_pk PRIMARY KEY (SEQ_CLIENTE, SEQ_GEOGRAFIA, SEQ_TEMPO, SEQ_PRODUTO, SEQ_FORMA_ENVIO)
+)
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_tempo_ft_vendas_fk
+FOREIGN KEY (SEQ_TEMPO)
+REFERENCES Avaliacao_A3.DI_TEMPO (SEQ_TEMPO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+687459 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_forma_envio_ft_vendas_fk
+FOREIGN KEY (SEQ_FORMA_ENVIO)
+REFERENCES Avaliacao_A3.DI_FORMA_ENVIO (SEQ_FORMA_ENVIO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+687460 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_geografia_ft_vendas_fk
+FOREIGN KEY (SEQ_GEOGRAFIA)
+REFERENCES Avaliacao_A3.DI_GEOGRAFIA (SEQ_GEOGRAFIA)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+687460 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_cliente_ft_vendas_fk
+FOREIGN KEY (SEQ_CLIENTE)
+REFERENCES Avaliacao_A3.DI_CLIENTE (SEQ_CLIENTE)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+687460 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_produto_ft_vendas_fk
+FOREIGN KEY (SEQ_PRODUTO)
+REFERENCES Avaliacao_A3.DI_PRODUTO (SEQ_PRODUTO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+687460 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :21
+775032 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+CREATE SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1
+775033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_TEMPO (
+                SEQ_TEMPO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_tempo_seq_tempo_seq_1'),
+                MES INTEGER NOT NULL,
+                TRIMESTRE INTEGER NOT NULL,
+                SEMESTRE INTEGER NOT NULL,
+                ANO INTEGER NOT NULL,
+                CONSTRAINT di_tempo_pk PRIMARY KEY (SEQ_TEMPO)
+)
+775033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_tempo_seq_tempo_seq_1 OWNED BY Avaliacao_A3.DI_TEMPO.SEQ_TEMPO
+775033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1
+775033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_FORMA_ENVIO (
+                SEQ_FORMA_ENVIO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1'),
+                FORMA_ENVIO VARCHAR(20) NOT NULL,
+                CONSTRAINT di_forma_envio_pk PRIMARY KEY (SEQ_FORMA_ENVIO)
+)
+775033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_forma_envio_seq_forma_envio_seq_1 OWNED BY Avaliacao_A3.DI_FORMA_ENVIO.SEQ_FORMA_ENVIO
+775033 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1
+775034 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_GEOGRAFIA (
+                SEQ_GEOGRAFIA INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_geografia_seq_geografia_seq_1'),
+                CIDADE VARCHAR(60) NOT NULL,
+                ESTADO VARCHAR(30) NOT NULL,
+                REGIAO VARCHAR(10) NOT NULL,
+                PAIS VARCHAR(60) NOT NULL,
+                CONSTRAINT di_geografia_pk PRIMARY KEY (SEQ_GEOGRAFIA)
+)
+775034 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_geografia_seq_geografia_seq_1 OWNED BY Avaliacao_A3.DI_GEOGRAFIA.SEQ_GEOGRAFIA
+775034 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1
+775035 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_CLIENTE (
+                SEQ_CLIENTE INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_cliente_seq_cliente_seq_1'),
+                NME_CLIENTE VARCHAR(80) NOT NULL,
+                TPO_CLIENTE VARCHAR(20) NOT NULL,
+                ID_CLIENTE VARCHAR(10) NOT NULL,
+                CONSTRAINT di_cliente_pk PRIMARY KEY (SEQ_CLIENTE)
+)
+775036 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_cliente_seq_cliente_seq_1 OWNED BY Avaliacao_A3.DI_CLIENTE.SEQ_CLIENTE
+775036 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq
+775036 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.DI_PRODUTO (
+                SEQ_PRODUTO INTEGER NOT NULL DEFAULT nextval('Avaliacao_A3.di_produto_seq_produto_seq'),
+                CAT_PRODUTO VARCHAR(40) NOT NULL,
+                SUB_CAT_PRODUTO VARCHAR(40) NOT NULL,
+                NME_PRODUTO VARCHAR(255) NOT NULL,
+                ID_PRODUTO VARCHAR(20) NOT NULL,
+                CONSTRAINT seq_produto PRIMARY KEY (SEQ_PRODUTO)
+)
+775036 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER SEQUENCE Avaliacao_A3.di_produto_seq_produto_seq OWNED BY Avaliacao_A3.DI_PRODUTO.SEQ_PRODUTO
+775037 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+CREATE TABLE Avaliacao_A3.FT_VENDAS (
+                SEQ_CLIENTE INTEGER NOT NULL,
+                SEQ_GEOGRAFIA INTEGER NOT NULL,
+                SEQ_TEMPO INTEGER NOT NULL,
+                SEQ_PRODUTO INTEGER NOT NULL,
+                SEQ_FORMA_ENVIO INTEGER NOT NULL,
+                VALOR_VENDAS DOUBLE PRECISION NOT NULL,
+                NRO_ITENS_VENDIDOS INTEGER NOT NULL,
+                MARGEM_LUCRO DOUBLE PRECISION NOT NULL,
+                LUCRO_VENDAS DOUBLE PRECISION NOT NULL,
+                CONSTRAINT ft_vendas_pk PRIMARY KEY (SEQ_CLIENTE, SEQ_GEOGRAFIA, SEQ_TEMPO, SEQ_PRODUTO, SEQ_FORMA_ENVIO)
+)
+775037 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_tempo_ft_vendas_fk
+FOREIGN KEY (SEQ_TEMPO)
+REFERENCES Avaliacao_A3.DI_TEMPO (SEQ_TEMPO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+775037 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_forma_envio_ft_vendas_fk
+FOREIGN KEY (SEQ_FORMA_ENVIO)
+REFERENCES Avaliacao_A3.DI_FORMA_ENVIO (SEQ_FORMA_ENVIO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+775037 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_geografia_ft_vendas_fk
+FOREIGN KEY (SEQ_GEOGRAFIA)
+REFERENCES Avaliacao_A3.DI_GEOGRAFIA (SEQ_GEOGRAFIA)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+775038 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_cliente_ft_vendas_fk
+FOREIGN KEY (SEQ_CLIENTE)
+REFERENCES Avaliacao_A3.DI_CLIENTE (SEQ_CLIENTE)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+775038 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.ddl.GenericDDLGenerator  - endStatement: 
+
+ALTER TABLE Avaliacao_A3.FT_VENDAS ADD CONSTRAINT di_produto_ft_vendas_fk
+FOREIGN KEY (SEQ_PRODUTO)
+REFERENCES Avaliacao_A3.DI_PRODUTO (SEQ_PRODUTO)
+ON DELETE NO ACTION
+ON UPDATE NO ACTION
+NOT DEFERRABLE
+775038 [AWT-EventQueue-0] INFO  ca.sqlpower.architect.swingui.SQLScriptDialog  - The list size is :21
